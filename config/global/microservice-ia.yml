@@ -1,0 +1,17 @@
+spring:
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:default_key}
+      base-url: https://api.openai.com/v1
+      
+resilience4j:
+  circuitbreaker:
+    instances:
+      openaiService:
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
