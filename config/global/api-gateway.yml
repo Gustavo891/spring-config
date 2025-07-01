@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: microservice-ia
+          uri: lb://microservice-ia
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: iaCircuitBreaker
+                fallbackUri: forward:/fallback/ia
+        - id: microservice-services
+          uri: lb://microservice-services
+          predicates:
+            - Path=/api/services/**
