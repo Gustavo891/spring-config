@@ -1,8 +1,8 @@
+# Configurações globais (sobrescrevem as locais se necessário)
 eureka:
-  instance:
-    hostname: localhost
+  server:
+    eviction-interval-timer-in-ms: 30000  # Intervalo de limpeza de instâncias inativas
+    response-cache-update-interval-ms: 5000
   client:
-    register-with-eureka: false  
-    fetch-registry: false     
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+    healthcheck:
+      enabled: true

@@ -6,9 +6,6 @@ spring:
     name: api-gateway
 
   cloud:
-    loadbalancer:
-      ribbon:
-        enabled: true
     gateway:
       routes:
         - id: user-service
