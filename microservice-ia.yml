@@ -1,6 +1,6 @@
 openai:
   api:
-    key: "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"
+    key: "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"
     url: https://api.openai.com/v1/chat/completions
     model: gpt-3.5-turbo
 
