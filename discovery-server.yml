@@ -1,8 +1,0 @@
-# Configurações globais (sobrescrevem as locais se necessário)
-eureka:
-  server:
-    eviction-interval-timer-in-ms: 30000  # Intervalo de limpeza de instâncias inativas
-    response-cache-update-interval-ms: 5000
-  client:
-    healthcheck:
-      enabled: true
