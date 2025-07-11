@@ -1,9 +1,9 @@
-spring:
-  ai:
-    openai:
-      api-key: ${OPENAI_API_KEY:default_key}
-      base-url: https://api.openai.com/v1
-      
+openai:
+  api:
+    key: "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"
+    url: https://api.openai.com/v1/chat/completions
+    model: gpt-3.5-turbo
+
 resilience4j:
   circuitbreaker:
     instances:
