@@ -7,11 +7,7 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/users/**
-        - id: ai-service  # Nova rota para o microserviço de IA
+        - id: microservice-ia  # Nova rota para o microserviço de IA
           uri: lb://microservice-ia
           predicates:
             - Path=/api/ai/**
