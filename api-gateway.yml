@@ -4,7 +4,6 @@ server:
 spring:
   application:
     name: api-gateway
-
   cloud:
     gateway:
       routes:
@@ -12,8 +11,19 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/users/**
-    discovery:
-      enabled: true
+        - id: ai-service  # Nova rota para o microserviço de IA
+          uri: lb://microservice-ia
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: aiCircuitBreaker
+                fallbackUri: forward:/fallback/ai
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
 
 eureka:
   client:
