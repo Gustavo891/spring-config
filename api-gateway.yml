@@ -1,17 +1,13 @@
-server:
-  port: 8080
-
 spring:
-  application:
-    name: api-gateway
   cloud:
     gateway:
       routes:
-        - id: microservice-ia  # Nova rota para o microserviço de IA
+        - id: microservice-ia
           uri: lb://microservice-ia
           predicates:
             - Path=/api/ai/**
           filters:
+            - StripPrefix=1
             - name: CircuitBreaker
               args:
                 name: aiCircuitBreaker
@@ -20,10 +16,3 @@ spring:
               args:
                 redis-rate-limiter.replenishRate: 10
                 redis-rate-limiter.burstCapacity: 20
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
