@@ -1,18 +1,1 @@
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: microservice-ia
-          uri: lb://microservice-ia
-          predicates:
-            - Path=/api/ai/**
-          filters:
-            - StripPrefix=1
-            - name: CircuitBreaker
-              args:
-                name: aiCircuitBreaker
-                fallbackUri: forward:/fallback/ai
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 10
-                redis-rate-limiter.burstCapacity: 20
+
