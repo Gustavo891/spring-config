@@ -29,3 +29,9 @@ resilience4j:
           - java.lang.RuntimeException
           - org.springframework.web.client.ResourceAccessException
           - java.util.concurrent.TimeoutException
+  timelimiter:
+    instances:
+      openAICircuitBreaker:
+        timeout-duration: 30s
+      serverlessCircuitBreaker:
+        timeout-duration: 10s
