@@ -1,5 +1,11 @@
 
 resilience4j:
+  ratelimiter:
+    instances:
+      openAICircuitBreaker:
+        limit-for-period: 5
+        limit-refresh-period: 1s
+        timeout-duration: 0
   circuitbreaker:
     instances:
       openAICircuitBreaker:
