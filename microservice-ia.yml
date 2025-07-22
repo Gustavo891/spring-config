@@ -2,7 +2,7 @@ resilience4j:
   ratelimiter:
     instances:
       openAIRateLimiter:
-        limit-for-period: 15
+        limit-for-period: 15000
         limit-refresh-period: 1m
         timeout-duration: 0
   circuitbreaker:
